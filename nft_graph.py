@@ -1,5 +1,5 @@
-#!/usr/bin/env python3  Line 1
-# -*- coding: utf-8 -*- Line 2
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # ----------------------------------------------------------------------------
 # Created By  : simo@whaleanalytica.com
 # Created Date: 04/10/2022
