@@ -1,0 +1,24 @@
+<head>
+  <style> body { margin: 0; } </style>
+
+  <script src="//unpkg.com/3d-force-graph"></script>
+  <!--  <script src="../../dist/3d-force-graph.js"></script>-->
+</head>
+
+<body>
+  <div style="background: black; color: white; font-family: Courier; font-size: 9px; padding: 10px">
+    contract: <b>0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d</b> - last update: <b>2022-10-04 00:40:37.531076</b>
+  </div>
+  <div id="3d-graph"></div>
+
+  <script>
+    const elem = document.getElementById('3d-graph');
+
+    const Graph = ForceGraph3D()(elem)
+      .jsonUrl('./0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d.json')
+      .nodeAutoColorBy('value')
+      .nodeVal('value')
+      .nodeLabel(node => `${node.id.substring(0,8)}...${node.id.substring(38,43)}`)
+      .onNodeClick(node => window.open(`https://opensea.io/${node.id}`, '_blank'));
+  </script>
+</body>
