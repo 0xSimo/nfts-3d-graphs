@@ -1,3 +1,20 @@
+#!/usr/bin/env python3  Line 1
+# -*- coding: utf-8 -*- Line 2
+# ----------------------------------------------------------------------------
+# Created By  : simo@whaleanalytica.com
+# Created Date: 04/10/2022
+# version ='1.0'
+# ---------------------------------------------------------------------------
+""" Generation of 3D NFT transaction graphs
+
+    The graph structure is inspired by my co-authored scientific work presented in:
+
+    S. Casale-Brunet, P. Ribeca, P. Doyle and M. Mattavelli,
+    "Networks of Ethereum Non-Fungible Tokens: A graph-based analysis of the ERC-721 ecosystem",
+    2021 IEEE International Conference on Blockchain, doi: 10.1109/Blockchain53845.2021.00033
+
+"""
+# ---------------------------------------------------------------------------
 import os
 import dotenv
 import json
@@ -13,6 +30,10 @@ from dune_client.query import Query
 
 
 def render_html_page(address, date):
+    """Render the HTML template page
+        :param address: the nft collection address
+        :param date: date in string form
+    """
     current_directory = os.path.dirname(os.path.abspath(__file__))
     env = Environment(loader=FileSystemLoader(current_directory))
     return env.get_template('/data/graph.html').render(
@@ -22,6 +43,11 @@ def render_html_page(address, date):
 
 
 def nft_graph(address, root_path, debug):
+    """Query tha data and generate the graph files
+        :param address: the nft collection address
+        :param root_path: the root path where output files will be stored. The path shall exist
+        :param debug: flag to enable debugging
+    """
     if not address or len(address) < 42:
         raise "address not valid"
     if not root_path or not os.path.isdir(root_path) or not os.path.exists(root_path):
@@ -77,7 +103,7 @@ def nft_graph(address, root_path, debug):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Store the trades of an NFT')
+    parser = argparse.ArgumentParser(description='NFT transactions graph generation')
     parser.add_argument('address', help="the NFT address",      type=str)
     parser.add_argument('output',  help="the output directory", type=str)
     parser.add_argument('--debug', help="store debug data",     action='store_true')

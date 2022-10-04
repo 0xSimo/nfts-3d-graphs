@@ -1,5 +1,5 @@
 # NFTs 3D Transactions Graph
-Generation of a transaction graph where each arc represents a wallet and each direct arc represents at least one 
+Generation of a transaction graph where each node represents a wallet and each direct arc represents at least one 
 sale/purchase transaction of a token from the given NFT collection between two wallets. 
 
 Data is retrieved using the [Dune API](https://dune.com/docs/api/) using the Dune query [https://dune.com/queries/1344718](https://dune.com/queries/1344718)
@@ -9,7 +9,7 @@ and as weight of each arc the number of unique tokens transferred from the sourc
 
 ![grab-landing-page](./data/graph.gif)
 
-The graph structure is inspired by the scientific work presented in: 
+The graph structure is inspired by my co-authored scientific work presented in: 
 S. Casale-Brunet, P. Ribeca, P. Doyle and M. Mattavelli, 
 **"Networks of Ethereum Non-Fungible Tokens: A graph-based analysis of the ERC-721 ecosystem"**,
 2021 IEEE International Conference on Blockchain, doi: [10.1109/Blockchain53845.2021.00033](https://ieeexplore.ieee.org/document/9680594).
